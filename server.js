@@ -1,11 +1,15 @@
-const express       = require('express');
-const app           = express();
-const bodyParser    = require('body-parser');
-const cors          = require('cors');
-const session       = require('express-session');
+const express           = require('express');
+const app               = express();
+const bodyParser        = require('body-parser');
+const cors              = require('cors');
+const session           = require('express-session');
+const methodOverride    = require('method-override');
 
 // Requrie db
 require('./db/db');
+
+// Set view engine for upload test
+app.set('view engine', 'ejs');
 
 // Use session
 app.use(session({
@@ -26,12 +30,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(methodOverride('_method'));
+
 // Require contorllers after the middleware
-const itemController = require('./controllers/itemController');
-const authController = require('./controllers/authController');
+const itemController    = require('./controllers/itemController');
+const authController    = require('./controllers/authController');
+const uploadController  = require('./controllers/uploadController');
 
 app.use('/api/v1/items', itemController);
 app.use('/auth/login', authController);
+app.use('/', uploadController);
 
 app.listen(9000, () => {
     console.log('API is listening on port 9000');
