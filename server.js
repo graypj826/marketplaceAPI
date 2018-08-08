@@ -4,6 +4,7 @@ const bodyParser        = require('body-parser');
 const cors              = require('cors');
 const session           = require('express-session');
 const methodOverride    = require('method-override');
+const stripe = require("stripe")("sk_test_TwTTlid3GeOG6YPydOjARw4I");
 
 // Requrie db
 require('./db/db');
@@ -44,7 +45,7 @@ app.use('/api/v1/items', itemController);
 app.use('/auth/login', authController);
 app.use('/', uploadController);
 app.use('/checkout', checkoutController);
-app.use('/', stripeController);
+app.use('/charge', stripeController);
 
 app.listen(9000, () => {
     console.log('API is listening on port 9000');
