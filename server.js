@@ -36,10 +36,12 @@ app.use(methodOverride('_method'));
 const itemController    = require('./controllers/itemController');
 const authController    = require('./controllers/authController');
 const uploadController  = require('./controllers/uploadController');
+const checkoutController= require('./controllers/checkoutController');
 
 app.use('/api/v1/items', itemController);
 app.use('/auth/login', authController);
 app.use('/', uploadController);
+app.use('/checkout', checkoutController);
 
 app.listen(9000, () => {
     console.log('API is listening on port 9000');
