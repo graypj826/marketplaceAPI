@@ -9,6 +9,7 @@ const stripe = require("stripe")("sk_test_TwTTlid3GeOG6YPydOjARw4I");
 // Requrie db
 require('./db/db');
 
+
 // Set view engine for upload test
 app.set('view engine', 'ejs');
 
@@ -47,6 +48,7 @@ app.use('/', uploadController);
 app.use('/checkout', checkoutController);
 app.use('/charge', stripeController);
 
-app.listen(9000, () => {
-    console.log('API is listening on port 9000');
-});
+app.listen(port);
+console.log('---------------------------------');
+console.log('Server running on port: ' + port);
+console.log('---------------------------------');
