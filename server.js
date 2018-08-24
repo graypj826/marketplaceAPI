@@ -6,6 +6,8 @@ const session           = require('express-session');
 const methodOverride    = require('method-override');
 const stripe = require("stripe")("sk_test_TwTTlid3GeOG6YPydOjARw4I");
 
+const port = process.env.PORT || 9000
+
 // Requrie db
 require('./db/db');
 
