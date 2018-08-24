@@ -15,6 +15,10 @@ require('./db/db');
 // Set view engine for upload test
 app.set('view engine', 'ejs');
 
+
+//serve static files from the react app
+app.use(express.static(path.join(__dirname, 'React/build')));
+
 // Use session
 app.use(session({
     secret: 'shop small',

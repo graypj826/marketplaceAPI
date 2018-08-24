@@ -28,7 +28,7 @@ class ItemContainer extends Component {
         });
     };
     getItems = async () => {
-        const items = await fetch('https://furnitureapi.herokuapp.com/api/v1/items', {
+        const items = await fetch('/api/v1/items', {
             method: "GET" 
         });
         const itemsJson = await items.json();
@@ -39,7 +39,7 @@ class ItemContainer extends Component {
         e.preventDefault();
 
         try {
-            const createItem = await fetch('https://furnitureapi.herokuapp.com/api/v1/items', {
+            const createItem = await fetch('/api/v1/items', {
                 method: 'POST',
                 body: JSON.stringify(item),
                 headers: {
@@ -59,7 +59,7 @@ class ItemContainer extends Component {
         console.log('deleteItem function is being called, this is the id:', id);
 
         try {
-            const deleteItem = await fetch('https://furnitureapi.herokuapp.com/api/v1/items' + id, {
+            const deleteItem = await fetch('/api/v1/items' + id, {
                 method: 'DELETE'
             });
 
@@ -85,7 +85,7 @@ class ItemContainer extends Component {
         e.preventDefault();
 
         try {
-            const editItem = await fetch('https://furnitureapi.herokuapp.com/api/v1/items' + this.state.editItemId, {
+            const editItem = await fetch('/api/v1/items' + this.state.editItemId, {
                 method: 'PUT',
                 body: JSON.stringify(this.state.itemToEdit),
                 headers: {

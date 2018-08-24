@@ -27,7 +27,7 @@ class StoreContainer extends Component {
         });
     };
     getItems = async () => {
-        const items = await fetch('http://localhost:9000/api/v1/items', {
+        const items = await fetch('/api/v1/items', {
             credentials: 'include',
             method: "GET" 
         });
@@ -83,7 +83,7 @@ class StoreContainer extends Component {
         console.log(checkout)
         e.preventDefault();
         try {
-            const createCheckout = await fetch('http://localhost:9000/checkout/', {
+            const createCheckout = await fetch('/checkout/', {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(checkout),
@@ -103,7 +103,7 @@ class StoreContainer extends Component {
     async submit(ev) {
         console.log("checkout form submitted")
         let {token} = await this.props.stripe.createToken({name: "Name"});
-        let response = await fetch("http://localhost:9000/charge", {
+        let response = await fetch("/charge", {
           method: "POST",
           headers: {"Content-Type": "text/plain"},
           body: token.id
